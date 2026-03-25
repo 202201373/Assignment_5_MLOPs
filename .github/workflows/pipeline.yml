@@ -44,7 +44,7 @@ jobs:
         env:
           MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
         run: |
-          python train.py --epochs 1 --learning_rate 10.0 --batch_size 64 --optimizer adam
+          python train.py --epochs 5 --learning_rate 0.001 --batch_size 64 --optimizer adam
 
       - name: Verify model_info.txt exists
         run: |
