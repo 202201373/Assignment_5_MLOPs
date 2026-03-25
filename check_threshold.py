@@ -25,7 +25,9 @@ def main():
     if tracking_uri:
         mlflow.set_tracking_uri(tracking_uri)
     else:
-        print("WARNING: MLFLOW_TRACKING_URI not set. Using default.")
+        import pathlib
+        mlruns_dir = pathlib.Path(__file__).parent / "mlruns"
+        mlflow.set_tracking_uri(mlruns_dir.as_uri())
 
     client = mlflow.tracking.MlflowClient()
     try:
