@@ -111,9 +111,8 @@ def run_experiment(
     if tracking_uri:
         mlflow.set_tracking_uri(tracking_uri)
     else:
-        mlruns_dir = pathlib.Path(__file__).parent / "mlruns"
-        mlruns_dir.mkdir(exist_ok=True)
-        mlflow.set_tracking_uri(mlruns_dir.as_uri())
+        db_path = pathlib.Path(__file__).parent / "mlflow.db"
+        mlflow.set_tracking_uri(f"sqlite:///{db_path}")
 
     mlflow.set_experiment("MNIST-Pipeline")
 

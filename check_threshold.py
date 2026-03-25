@@ -26,8 +26,8 @@ def main():
         mlflow.set_tracking_uri(tracking_uri)
     else:
         import pathlib
-        mlruns_dir = pathlib.Path(__file__).parent / "mlruns"
-        mlflow.set_tracking_uri(mlruns_dir.as_uri())
+        db_path = pathlib.Path(__file__).parent / "mlflow.db"
+        mlflow.set_tracking_uri(f"sqlite:///{db_path}")
 
     client = mlflow.tracking.MlflowClient()
     try:

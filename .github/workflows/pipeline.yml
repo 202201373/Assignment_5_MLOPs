@@ -60,6 +60,7 @@ jobs:
           name: model-artifacts
           path: |
             model_info.txt
+            mlflow.db
             mlruns/
 
   deploy:
