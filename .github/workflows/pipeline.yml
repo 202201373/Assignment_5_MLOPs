@@ -54,11 +54,13 @@ jobs:
           fi
           echo "Run ID: $(cat model_info.txt)"
 
-      - name: Upload model_info artifact
+      - name: Upload model artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: model-info
-          path: model_info.txt
+          name: model-artifacts
+          path: |
+            model_info.txt
+            mlruns/
 
   deploy:
     runs-on: ubuntu-latest
@@ -78,10 +80,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Download model_info artifact
+      - name: Download model artifacts
         uses: actions/download-artifact@v4
         with:
-          name: model-info
+          name: model-artifacts
 
       - name: Display Run ID
         run: |
